@@ -1,0 +1,50 @@
+version: '3'
+services:
+  telegraf:
+    image: telegraf:1.21.2
+    container_name: run_local_telegraf
+    restart: always
+    depends_on:
+      - influxdb
+    volumes:
+      - ./docker_config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    links:
+      - influxdb
+    ports:
+      - '8125:8125'
+  
+  influxdb:
+    container_name: run_local_influxdb
+    image: influxdb:1.8-alpine
+    restart: always
+    environment:
+      - INFLUXDB_DB=influx
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin
+    # volumes:
+    #   - /mytelegrafconfigsdir/telegraf.conf:/var/lib/influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+  
+  grafana:
+    image: grafana/grafana
+    container_name: run_local_grafana
+    restart: always
+    depends_on:
+      - influxdb
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=
+    links:
+      - influxdb
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana_data:/var/lib/grafana
+    
+volumes:
+  grafana_data: {}
+  influxdb_data: {}
