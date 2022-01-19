@@ -9,3 +9,7 @@ My backend nestjs
 - [ ] userrole, api version, configuration
 - [ ] upload file service
 - [ ] connect machine learning model
+
+
+# reference
+- https://thenewstack.io/how-to-setup-influxdb-telegraf-and-grafana-on-docker-part-1/
