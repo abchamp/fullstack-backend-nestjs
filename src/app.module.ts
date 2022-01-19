@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { UsersModule } from './api/users/users.module';
 // 
-import { InfluxDbModule, InfluxModuleOptions } from "./utils/influx";
+import { InfluxDbModule, InfluxModuleOptions } from "./utils/influx_module";
 // import * as influxDb from "./utils/influx";
 
 import { TrafficService } from "./tf_test";
