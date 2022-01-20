@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './api/users/users.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module'
 // 
 import { InfluxDbModule, InfluxModuleOptions } from "./utils/influx_module";
 import { MongooseModule } from '@nestjs/mongoose';
@@ -29,7 +30,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         uri: configService.get<string>('MONGO_DATABASE_URI'),
       })
     }),
-    UsersModule],
+    UsersModule,
+    AuthModule],
   controllers: [],
   providers: [],
 })

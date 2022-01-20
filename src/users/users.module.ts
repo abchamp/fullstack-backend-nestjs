@@ -5,10 +5,11 @@ import { UsersController } from './users.controller';
 //
 import { Users, UsersSchema } from "./users.schema";
 //
-import { influxLogService } from "../../utils/influx_service/influx_log.service";
+import { influxLogService } from "../utils/influx_service/influx_log.service";
 @Module({
   imports: [MongooseModule.forFeature([{ name: Users.name, schema: UsersSchema }])],
   controllers: [UsersController],
-  providers: [UsersService, influxLogService]
+  providers: [UsersService, influxLogService],
+  exports: [UsersService]
 })
 export class UsersModule { }
