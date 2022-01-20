@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { UsersModule } from './api/users/users.module';
 // 
 import { InfluxDbModule, InfluxModuleOptions } from "./utils/influx_module";
-
+import { MongooseModule } from '@nestjs/mongoose';
 // import { TrafficService } from "./tf_test";
 @Module({
   imports: [
@@ -16,6 +16,8 @@ import { InfluxDbModule, InfluxModuleOptions } from "./utils/influx_module";
         };
       }
     }),
+    //
+    MongooseModule.forRoot('mongodb://localhost/app'),
     UsersModule],
   controllers: [],
   providers: [],
