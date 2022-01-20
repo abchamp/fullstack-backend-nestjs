@@ -15,10 +15,11 @@ export class LoggingInterceptor implements NestInterceptor {
             .handle()
             .pipe(
                 tap(async () => {
-                    // get req header 
-                    console.log(context);
-                    await this.influxLogService.check_connect()
-                    console.log(`After... ${Date.now() - now}ms`)
+                    // get req header
+                    // TODO:: fix this again. 
+                    // await this.influxLogService.check_measurement();
+                    // await this.influxLogService.create_log()
+                    // console.log(`After... ${Date.now() - now}ms`)
                 }),
             );
     }
