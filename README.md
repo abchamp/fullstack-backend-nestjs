@@ -4,11 +4,12 @@ My backend nestjs
 
 # checkpoint
 - [~1] test connection to influx for monitoring (remaining security config)
-- [ ] stest connection to mongo and mongo express
+- [~d] stest connection to mongo and mongo express
 - [ ] enviroment 
-- [ ] user role, api version, configuration
+- [ ] user(data encryption => password) user role, api version, configuration
 - [ ] upload file service
 - [ ] connect machine learning model
+- [ ] python docker container utility
 
 
 # reference

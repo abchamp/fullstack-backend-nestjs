@@ -44,7 +44,30 @@ services:
       - '3000:3000'
     volumes:
       - grafana_data:/var/lib/grafana
-    
+  
+  mongo:
+    image: mongo:4.4
+    container_name: run_local_mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+      - mongo_backup_data:/backup
+  
+  mongo_express:
+    image: mongo-express:latest
+    container_name: run_local_mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    links:
+      - mongo
+    depends_on:
+      - mongo
+
 volumes:
   grafana_data: {}
   influxdb_data: {}
+  mongo_data: {}
+  mongo_backup_data: {}
