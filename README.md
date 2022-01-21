@@ -6,11 +6,14 @@ My backend nestjs
 - [~1] test connection to influx for monitoring (remaining security config)
 - [~1] stest connection to mongo and mongo express
 - [/] ready: enviroment configuration
-- [ ] user authorization
-- [ ] user(data encryption => password) user role, api version, 
+- [ ] user authentication
+- [ ] user authorization (user role)
+- [ ] queue background process for preprocess data
+- [ ] user(data encryption => password)
+- [ ] api version
 - [~1] upload file service
 - [ ] connect machine learning model
-- [ ] python docker container utility
+- [ ] python to connect docker container (utility)
 
 
 # reference
