@@ -8,12 +8,12 @@ My backend nestjs
 - [/] ready: enviroment configuration
 - [~dev] user authentication
 - [~p1-dev] user authorization (user role)
-- [ ] queue background process for preprocess data
-- [ ] user(data encryption => password)
-- [ ] api version
+- [~p1-dev] queue background process for preprocess data
+- [==>] user(data encryption => password)
+- [==>] api version
 - [~1] upload file service
-- [ ] connect machine learning model
-- [ ] python to connect docker container (utility)
+- [==>] connect machine learning model
+- [==>] python to connect docker container (utility)
 
 
 # reference
