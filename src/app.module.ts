@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
+import { BullModule } from '@nestjs/bull';
+import { InfluxDbModule, InfluxModuleOptions } from "./utils/influx_module";
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module'
-// 
-import { InfluxDbModule, InfluxModuleOptions } from "./utils/influx_module";
-import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-
+import { MlWorkerModule } from './ml-worker/ml-worker.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -30,8 +30,16 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         uri: configService.get<string>('MONGO_DATABASE_URI'),
       })
     }),
+    //
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port: 6379,
+      },
+    }),
     UsersModule,
-    AuthModule],
+    AuthModule,
+    MlWorkerModule],
   controllers: [],
   providers: [],
 })

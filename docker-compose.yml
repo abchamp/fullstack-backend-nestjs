@@ -67,7 +67,14 @@ services:
       - mongo
     depends_on:
       - mongo
-
+  
+  redis:
+    image: redis:6.2.6
+    container_name: run_local_redis
+    restart: always
+    ports:
+      - 6379:6379
+    
 volumes:
   grafana_data: {}
   influxdb_data: {}
