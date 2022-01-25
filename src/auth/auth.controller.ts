@@ -24,6 +24,7 @@ export class AuthController {
             // console.log(authData);
             
         } catch(err) {
+            console.log(err);
             return errorResp({}, "server fail")
         }
    
