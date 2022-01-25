@@ -15,8 +15,14 @@ export class AuthController {
                 username: req.body.username,
                 password: req.body.password
             });
+
+            if(!authData) {
+                return successResp({}, 'Authentication fail', 400, '', 1)
+            } else{
+                return successResp(authData)
+            }
             // console.log(authData);
-            return successResp(authData)
+            
         } catch(err) {
             return errorResp({}, "server fail")
         }
