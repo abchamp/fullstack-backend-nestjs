@@ -10,8 +10,9 @@ export interface Response<T> {
 export class TransformAndLoggingInterceptor<T> implements NestInterceptor<T, Response<T>> {
     intercept(context: ExecutionContext, next: CallHandler): Observable<Response<T>> {
         console.log("transform and logginginterceptor");
-        return next.handle().pipe(tap(async () => {
+        return next.handle().pipe(tap(async (data) => {
             console.log("save logging")
+            // console.log(data['errType']);
             // error msg
             // uri
             // 

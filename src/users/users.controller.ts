@@ -5,6 +5,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { TransformAndLoggingInterceptor } from 'src/utils/interceptor/transformAndLogging.interceptor';
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { RolesGuard } from 'src/auth/roles.guard';
+import { successResp, errorResp } from 'src/utils/response_handler';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -20,11 +21,13 @@ export class UsersController {
   @Get()
   @UseInterceptors(TransformAndLoggingInterceptor)
   async findAll() {
-    return {
-      data: await this.usersService.findAll(),
-      code: 200,
-      msg: null
+    let userData = await this.usersService.findAll()
+    try {
+      return successResp(userData)
+    } catch(error) {
+      return errorResp({})
     }
+    
   }
 
   // @Get(':id')
