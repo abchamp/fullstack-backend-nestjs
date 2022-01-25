@@ -9,6 +9,7 @@ My backend nestjs
 - [~dev] user authentication
 - [~p1-dev] user authorization (user role)
 - [~p1-dev] queue background process for preprocess data
+- [~p1-dev] ng seed
 - [==>] user(data encryption => password)
 - [==>] api version
 - [~1] upload file service

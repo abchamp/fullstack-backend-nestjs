@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, Use
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { LoggingInterceptor } from 'src/utils/interceptor/logging.interceptor';
+import { TransformAndLoggingInterceptor } from 'src/utils/interceptor/transformAndLogging.interceptor';
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { RolesGuard } from 'src/auth/roles.guard';
 @Controller('users')
@@ -11,14 +11,20 @@ export class UsersController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
+    // set roles
+    createUserDto.roles = []
     return this.usersService.create(createUserDto);
   }
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  // @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
-  // @UseInterceptors(LoggingInterceptor)
-  findAll() {
-    return this.usersService.findAll();
+  @UseInterceptors(TransformAndLoggingInterceptor)
+  async findAll() {
+    return {
+      data: await this.usersService.findAll(),
+      code: 200,
+      msg: null
+    }
   }
 
   // @Get(':id')

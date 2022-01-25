@@ -6,6 +6,12 @@ export type UsersDocument = Users & Document;
 @Schema()
 export class Users {
     @Prop()
+    name: string;
+
+    @Prop()
+    email: string;
+
+    @Prop()
     username: string;  
     
     @Prop()
@@ -13,6 +19,15 @@ export class Users {
 
     @Prop()
     roles: string[];
+
+    @Prop({type: Date, default: new Date})
+    created_at: Date;
+
+    @Prop({type: Date , default: new Date})
+    updated_at: Date;
+
+    @Prop({type: String, default: "system"})
+    created_by: string;
 }
 
 export const UsersSchema = SchemaFactory.createForClass(Users);

@@ -10,18 +10,17 @@ import { Users, UsersDocument } from './users.schema';
 export class UsersService {
   constructor(@InjectModel(Users.name) private usersModel: Model<UsersDocument>) {}
 
-  create(createUserDto: CreateUserDto) {
+  create(createUserDto: CreateUserDto): Promise<Users> {
     const createdUser = new this.usersModel(createUserDto);
+    // password
     return createdUser.save();
   }
 
-  findAll() {
-    // const createdUser = new this.usersModel(this.usersModel.find().exec());
-    // return createdUser
+  async findAll(): Promise<Users[]> {
     return this.usersModel.find().exec();
   }
 
-  findOne(username: string) {
+  findOne(username: string): Promise<Users>{
     // const user = this.usersModel.find({"username": username}).exec()
     // const createdUser = new this.usersModel(this.usersModel.find({"username": username}).exec());
     return this.usersModel.findOne({"username": username}).exec()

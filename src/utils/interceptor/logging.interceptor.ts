@@ -8,13 +8,15 @@ export class LoggingInterceptor implements NestInterceptor {
     constructor(private readonly influxLogService: influxLogService) {}
 
     intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-        console.log('Before...');
-
-        const now = Date.now();
+        // const now = Date.now();
         return next
             .handle()
             .pipe(
                 tap(async () => {
+                    console.log("save logging")
+                    // error msg
+                    // uri
+                    // 
                     // get req header
                     // TODO:: fix this again. 
                     // await this.influxLogService.check_measurement();
