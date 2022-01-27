@@ -41,7 +41,7 @@ services:
     links:
       - influxdb
     ports:
-      - '3000:3000'
+      - '3005:3000'
     volumes:
       - grafana_data:/var/lib/grafana
   # https://stackoverflow.com/questions/42912755/how-to-create-a-db-for-mongodb-container-on-start-up

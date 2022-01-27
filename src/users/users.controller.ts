@@ -1,4 +1,4 @@
-import { Controller, Request, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UseGuards } from '@nestjs/common';
+import { Controller, Request, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UseGuards, HttpStatus } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -6,7 +6,7 @@ import { TransformAndLoggingInterceptor } from 'src/utils/interceptor/transformA
 import { JwtAuthGuard } from "../auth/jwt-auth.guard";
 import { successResp, errorResp } from 'src/utils/response_handler';
 import { RolesGuard } from 'src/auth/producer.roles.guard';
-@Controller('users')
+@Controller('users')  
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
@@ -26,7 +26,7 @@ export class UsersController {
     try {
       return successResp(userData)
     } catch(error) {
-      return errorResp({})
+      return errorResp({}, "server fail")
     }
   }
 

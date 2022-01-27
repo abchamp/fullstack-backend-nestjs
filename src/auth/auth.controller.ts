@@ -1,4 +1,4 @@
-import { Controller, Request, Post, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Controller, Request, Post, UseInterceptors } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { TransformAndLoggingInterceptor } from 'src/utils/interceptor/transformAndLogging.interceptor';
 import { successResp, errorResp } from 'src/utils/response_handler';

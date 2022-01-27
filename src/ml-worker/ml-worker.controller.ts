@@ -7,7 +7,7 @@ export class MlWorkerController {
     // producer
     // create task to add queue
     constructor(@InjectQueue('ML_worker') private readonly mlWorker: Queue) { }
-
+    // upload ml woker
     @Post('queuetest')
     async transcode() {
         await this.mlWorker.add('queuetest', {
@@ -18,5 +18,10 @@ export class MlWorkerController {
         })
         return {}
     }
+
+    // upload image and save to and create 
+    // response upload image id
+    // raw image name
+    // extract_result
 
 }
