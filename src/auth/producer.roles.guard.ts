@@ -7,7 +7,7 @@ export class RolesGuard implements CanActivate {
         context: ExecutionContext,
     ): boolean | Promise<boolean> | Observable<boolean> {
         const request = context.switchToHttp().getRequest();
-        if((request.user.g !== 1) && (request.user.g !== 10)){
+        if((request.user.gp !== 1) && (request.user.gp !== 10)){
             return true;
         } else {
             return false;

@@ -28,12 +28,22 @@ export class AuthService {
             return 100;
     }
 
+    getRolesStr(role_list) {
+        if(role_list.includes('Owner'))
+            return 'ow';
+        else if (role_list.includes('Admin'))
+            return 'ad';
+        else
+            return 'st';
+    }
+
     async login(user: any) {
         const account = await this.validateUser(user.username, user.password);
         if (account !== null) {
-            const payload = { username: user.username, g: this.getRoles(account.roles)};
+            const payload = { username: user.username, gp: this.getRoles(account.roles)};
             return {
                 access_token: this.jwtService.sign(payload),
+                gp: this.getRolesStr(account.roles),
             };
         } else {
             return false;

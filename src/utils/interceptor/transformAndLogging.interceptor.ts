@@ -14,6 +14,7 @@ export interface Response<T> {
 }
 
 // https://stackoverflow.com/questions/55406194/nestjs-set-httpstatus-in-interceptor
+// https://docs.nestjs.com/exception-filters
 @Injectable()
 export class TransformAndLoggingInterceptor<T>
   implements NestInterceptor<T, Response<T>>
