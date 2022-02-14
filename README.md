@@ -5,16 +5,16 @@ My backend nestjs
 # checkpoint
 - [devOnly] test connection to influx for monitoring (remaining security config)
 - [devOnly] stest connection to mongo and mongo express
-- [/] ready: enviroment configuration
-- [/] user authentication (not refresh token)
-- [/] user authorization (user role)
+- [x] ready: enviroment configuration
+- [x] user authentication (not refresh token)
+- [x] user authorization (user role)
 - [~p1-dev] queue background process for preprocess data
-- [/] ng seed
-- [/] user(data encryption => password)
-- [x] api version
+- [x] ng seed
+- [x] user(data encryption => password)
+- [-] api version
 - [~1] upload file service
 - [Working] connect machine learning model for succes and loss
-- [/] python to connect docker container (utility)
+- [x] python to connect docker container (utility)
 
 
 # reference
