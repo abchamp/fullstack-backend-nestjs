@@ -9,12 +9,12 @@ My backend nestjs
 - [/] user authentication (not refresh token)
 - [/] user authorization (user role)
 - [~p1-dev] queue background process for preprocess data
-- [==>devOnly] ng seed
+- [/] ng seed
 - [/] user(data encryption => password)
 - [x] api version
 - [~1] upload file service
-- [==>] connect machine learning model for succes and loss
-- [==>] python to connect docker container (utility)
+- [Working] connect machine learning model for succes and loss
+- [/] python to connect docker container (utility)
 
 
 # reference
